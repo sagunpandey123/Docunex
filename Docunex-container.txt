@@ -1,0 +1,18 @@
+Choose either run commands:
+
+1) docker run --rm -d -p 4200:4200/tcp docunex:2nd
+>>Here, --rm flag automatically deletes the container when it exits.
+
+2) docker run  -d -p 4200:4200/tcp docunex:2nd
+>>[RECOMMENDED] To run the same container again, remove the --rm flag and run this line.
+
+3) docker run -d  --name zealous_jepsen --mount source=docunex1,target=/app docunex:2nd
+>> Here, --name flag is used to name a container. If you donot intend to name it, the docker generates a container
+    name automatically. Remember, the container name has to be unique.
+
+>> --mount source=docunex1
+	Here, docunex1 is the name of the volume where the data of the running container will be mounted.
+
+>>docunex:2nd is the name of the image.
+
+4)docker run  -d  --mount source=docunex1,target=/app -p 4200:4200/tcp docunex:2nd

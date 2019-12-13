@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  docunex1:
+    container_name: docunex1
+    image: docunex:2nd
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/docunex'
+      - '/docunex/node_modules'
+    ports:
+      - 4200:4200
+  

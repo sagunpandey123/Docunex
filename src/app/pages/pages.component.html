@@ -1,0 +1,198 @@
+<div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <form class="form-search col-md-12" style="margin-top: -60x;">
+        <div class="row align-items-top">
+
+            <div class="col-md-0">
+                <a href="pages" button type="submit" class="btn btn-success text-white btn-block rounded-0"><i class="icon-search text-white"></i></a>
+              </div>
+          <div class="col-md-11" style="padding-left: 0px;">
+            <div class="select-wrap">
+              <span class="text-right"></span>
+              <!--<input class="form-control d-block rounded-5" placeholder= "Search Here...">-->
+              <a id="search-docunex"></a>
+              <!--<i class="icon-search text-success" aria-hidden="true"></i>-->
+              <input class="form-control d-block rounded-0" #searchBox (input)="search(searchBox.value)" placeholder="Search Here..." name="q" enableAutoComplete="true"/>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
+          <div class="mr-auto">
+            <!-- <a href="index.html" class="icon-view view-module"><span class="icon-view_module"></span></a> -->
+            <a href="pages" class="icon-view view-list active"><span class="icon-view_list"></span></a>
+
+
+            <mat-form-field>
+              <mat-label>&nbsp;&nbsp;&nbsp;Search From</mat-label>
+              <mat-select [formControl]="searchFromArray" multiple (selectionChange)="search(searchBox.value)">
+                <mat-option *ngFor="let searchFrom of searchFromList" [value]="searchFrom">{{searchFrom.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="ml-auto d-flex align-items-center">
+            <div>
+              <a href="#" class="view-list px-3 border-right active">All</a>
+              <!-- <a href="#" class="view-list px-3 border-right">Rent</a> -->
+              <!-- <a href="#" class="view-list px-3">Sale</a> -->
+            </div>
+
+            <!--<div class="select-wrap">
+              <span class="icon icon-arrow_drop_down"></span>
+              <select class="form-control form-control-sm d-block rounded-0">
+                <option value="">Search by</option>
+                <option value="">Price Ascending</option>
+                <option value="">Price Descending</option>
+              </select>
+            </div>-->
+
+            <mat-form-field>
+              <mat-label>&nbsp;&nbsp;&nbsp;Search By</mat-label>
+              <mat-select [formControl]="searchByArray" multiple (selectionChange)="search(searchBox.value)">
+                <mat-option *ngFor="let searchBy of searchByList" [value]="searchBy">{{searchBy.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--FOR SALEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE-->
+<!-- <div class="site-blocks-cover overlay" style="background-image: url(assets/images/hero_bg_2.jpg);">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+
+            <div class="col-md-2">
+            <input type="submit" class="btn btn-success text-white btn-block rounded-5" value="Search">
+          </div>
+
+    </div>
+  </div>
+</div> -->
+
+<!--CONTAINER 3 search box\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<!--search boxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!--<div class="site-section site-section-sm pb-0">
+<div class="container">
+  <div class="row">
+    <form class="form-search col-md-12" style="margin-top: -100px;">
+      <div class="row align-items-end">
+
+        <div class="col-md-10">
+          <label for="offer-types">Search Here</label>
+          <div class="select-wrap">
+            <span class="text-right"></span>
+            <select name="offer-types" id="offer-types" class="form-control d-block rounded-5">
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <input type="submit" class="btn btn-success text-white btn-block rounded-5" value="Search">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
+        <div class="mr-auto">
+          <a href="index.html" class="icon-view view-module"><span class="icon-view_module"></span></a>
+          <a href="view-list.html" class="icon-view view-list active"><span class="icon-view_list"></span></a>
+
+        </div>
+        <div class="ml-auto d-flex align-items-center">
+          <div>
+            <a href="#" class="view-list px-3 border-right active">All</a>
+            <a href="#" class="view-list px-3 border-right">Rent</a>
+            <a href="#" class="view-list px-3">Sale</a>
+          </div>
+
+          <div class="select-wrap">
+            <span class="icon icon-arrow_drop_down"></span>
+            <select class="form-control form-control-sm d-block rounded-0">
+              <option value="">Sort by</option>
+              <option value="">Price Ascending</option>
+              <option value="">Price Descending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+   </div>
+  </div>
+
+</div>
+</div>-->
+<!--CONTAINER 4 numbers\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<div class="site-section site-section-sm bg-light">
+
+<div class="container">
+  <!-- This shows the total number of files that contains the search term-->
+  <h5>Search Result:{{result.hits.hits.length}} </h5>
+  <div class="row mb-0">
+    <div class="col-md-14" style="margin-top: 600x;">
+      <div class="property-entry horizontal d-lg-flex"  *ngFor="let hit of result.hits.hits">
+        <!--<a href="#" class="property-thumbnail h-100">
+              <img src="assets/images/img_1.jpg" alt="Image" class="img-fluid">
+            </a>-->
+        <div class="p-4 property-body">
+          <!--<a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>-->
+
+          <h1 class="property-title"><i class="icon-star text-danger" aria-hidden="true"></i> Filenam:<u>
+            <!--<a href="http://lfkbwtweb01/pcase/API/files?address=\\LFKBWTFENG\plant drawings\{{ hit._source.path.virtual | ampersandEncode }}">{{ hit._source.file.filename }}</a></u>-->
+            <a href="http://lfkbwtweb01/pcase/API/files?address=\\WPC-BACKUP\ScannedDocs-DEC BWT etc\{{ hit._source.path.virtual | ampersandEncode }}">{{ hit._source.file.filename }}</a></u>
+
+          </h1>
+          <span class="property-location d-block mb-3"><span class="property-icon icon-room"> Path:
+            </span>{{ hit._source.path.virtual }}</span>
+            <span class="property-location d-block mb-3"><span class="property-icon icon-room"> REAL:
+              </span>{{ hit._source.path.real }}</span>
+          <strong class="property-price text-primary mb-3 d-block text-success"><span>Title:
+            </span>{{ hit._source.meta.title}}</strong>
+          <p [innerHTML]="hit._source.content | slice:0:400 | highlight:searchTerm"></p>
+          <!--<ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">2 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">2</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">SQ FT</span>
+                  <span class="property-specs-number">5,500</span>
+
+                </li>
+              </ul>-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--<div class="row mt-5">
+    <div class="col-md-12 text-center">
+      <div class="site-pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <span>...</span>
+        <a href="#">10</a>
+      </div>
+    </div>
+  </div>-->
+
+</div>
+</div>
+
